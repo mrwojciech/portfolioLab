@@ -1,7 +1,9 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.donation;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.charity.institution.Institution;
+import pl.coderslab.charity.category.Category;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,17 +17,21 @@ name: ubrania, zabawki
 @Getter
 @Setter
 @Entity
+@Table(name = "donation")
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "donation_id")
     private Long id;
 
     private Integer quantity;
 
     @OneToMany
+    @JoinColumn(name = "category_id")
     private List<Category> categories;
 
     @OneToOne
+    @JoinColumn(name = "institution_id")
     private Institution institution;
 
     private String street;

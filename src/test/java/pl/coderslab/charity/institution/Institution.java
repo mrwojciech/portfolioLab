@@ -1,26 +1,29 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.institution;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /*
 Encja ta reprezentuje dane znajdujące się w aplikacji, np:
-name: ubrania, zabawki
+        name : Fundacja “Bez domu”
+        description : Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania
 */
+
 @Getter
 @Setter
 @Entity
-public class Category {
+@Table(name = "institutions")
+public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "institution_id")
     private Long id;
 
     private String name;
+
+    private String description;
 
     public void setId(Long id) {
         this.id = id;

@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.category;
 
 import org.springframework.stereotype.Repository;
 
@@ -8,14 +8,11 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public class DonationDao {
+public class CategoryDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-    public void saveDonation(Donation donation) {
-        entityManager.persist(donation);
+    public void saveCategory(Category category) {
+        entityManager.persist(category);
     }
-
-
-
 }
