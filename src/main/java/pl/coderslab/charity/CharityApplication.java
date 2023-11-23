@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan
+@EntityScan("pl.")
 public class CharityApplication {
 
     public static void main(String[] args) {

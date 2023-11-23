@@ -1,16 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
-
-    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="<c:url value="/static/css/style.css"/>"/>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -18,7 +17,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${allDonationsBagsQuantity}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -26,7 +25,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${allDonationsQuantity}</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -69,9 +68,9 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value='resources/images/signature.svg'/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value='../../../resources/static/images/signature.svg'/>" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value='resources/images/about-us.jpg'/>" alt="People in circle"/>
+    <div class="about-us--image"><img src="<c:url value='../../../resources/static/images/about-us.jpg'/>" alt="People in circle"/>
     </div>
 </section>
 
@@ -84,18 +83,38 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
+          <%--  <li>
                 <div class="col">
                     <div class="title">Fundacja "Dla dzieci"</div>
                     <div class="subtitle">Cel i misja: Pomoc osobom
-                        znajdującym się w trudnej sytuacji życiowej.</div>
+                        znajdującym się w trudnej sytuacji życiowej.
+                    </div>
                 </div>
                 <div class="col">
                     <div class="title">Fundacja "Bez domu"</div>
                     <div class="subtitle">Cel i misja: Pomoc dla osób
-                        nieposiadających miejsca zamieszkania</div>
+                        nieposiadających miejsca zamieszkania
+                    </div>
                 </div>
-            </li>
+            </li>--%>
+
+              <c:forEach items="${institutions}" var="institution" varStatus="loop">
+                  <c:if test="${loop.index % 2 == 0}">
+                      <li>
+                          <div class="col">
+                              <div class="title">${institution.name}</div>
+                              <div class="subtitle">${institution.description}</div>
+                          </div>
+                          <c:if test="${not empty institutions[loop.index + 1]}">
+                              <div class="col">
+                                  <div class="title">${institutions[loop.index + 1].name}</div>
+                                  <div class="subtitle">${institutions[loop.index + 1].description}</div>
+                              </div>
+                          </c:if>
+                      </li>
+                  </c:if>
+              </c:forEach>
+
 
         </ul>
     </div>
@@ -103,6 +122,6 @@
 </section>
 
 <%@ include file="footer.jsp" %>
-<script src="<c:url value="resources/js/app.js"/>"></script>
+<script src="<c:url value="/js/app.js"/>"></script>
 </body>
 </html>

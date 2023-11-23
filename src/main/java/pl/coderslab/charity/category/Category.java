@@ -22,10 +22,6 @@ public class Category {
 
     private String name;
 
-    @ManyToOne()
-    @JoinColumn(name = "donation_id")
-    private Donation donation;
-
     public void setId(Long id) {
         this.id = id;
     }

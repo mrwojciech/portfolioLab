@@ -17,5 +17,12 @@ public class DonationDao {
     }
 
 
+    public Long getAllDonationsBagsQuantity() {
+        return (Long) entityManager.createQuery("SELECT SUM(d.quantity) FROM Donation d").getSingleResult();
+    }
 
+
+    public Long getAllDonationsQuantity() {
+        return (Long) entityManager.createQuery("SELECT COUNT(*) FROM Donation d").getSingleResult();
+    }
 }
