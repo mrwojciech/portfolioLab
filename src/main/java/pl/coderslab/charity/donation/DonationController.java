@@ -22,6 +22,9 @@ public class DonationController {
     @GetMapping("/add")
     public String createDonation(Model model) {
         model.addAttribute("categories",categoryDao.findAll());
+        model.addAttribute("donation", new Donation());
+        Integer quantity = null;
+        model.addAttribute("quantity", quantity);
         model.addAttribute("institutions",institutionDao.findAll());
         return "form";
     }

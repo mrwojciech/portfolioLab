@@ -37,24 +37,26 @@
 
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
-<%--// spring forms lub formularz--%>
+        <%--// spring forms lub formularz--%>
         <form action="form-confirmation.html" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
 
+                <%--                <form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id"--%>
+                <%--                                 class="form-group form-group--checkbox"/>--%>
 
                 <c:forEach items="${categories}" var="category">
-<%--                    <form:checkbox path="categories" value="${category.id}" style="display: none;"/>--%>
-<%--                    <form:checkboxes path="categories" items="${categories}" value="${category.name}" style="display: none;"/>--%>
+                    <%--                                    <form:checkbox path="categories" value="${category.id}" style="display: none;"/>--%>
                     <div class="form-group form-group--checkbox">
-                        <label>
 
-                            <input type="checkbox" name="categories" value=${category.name}/>
+                        <label>
+                            <input type="checkbox" name="categories" value=${category.name} id=${category.name} />
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
                     </div>
+
                 </c:forEach>
 
                 <div class="form-group form-group--buttons">
@@ -69,7 +71,8 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1"/>
+                        <%--                        <form:input path="bags" min="1"/>--%>
+                        <input type="number" name="quantity" id ="dontation.quantity" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -87,8 +90,8 @@
 
                     <div class="form-group form-group--checkbox">
                         <label>
-<%--                            <form:select path="institution" items="${institutions}"/>--%>
-                            <input type="radio" name="organization" value="old"/>
+                                <%--                            <form:select path="institution" items="${institutions}"/>--%>
+                            <input type="radio" name="organization" value="old" id="institution.name"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">${institution.name}</div>
@@ -111,24 +114,24 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address"/>
-<%--                                <form:input path="street" />--%>
+                            <label> Ulica <input type="text" name="street" id="street"/>
+                                <%--                                <form:input path="street" />--%>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city"/> </label>
+                            <label> Miasto <input type="text" name="city" id="city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="postcode"/>
+                                Kod pocztowy <input type="text" name="zipCode" id="zipCode"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone"/>
+                                Numer telefonu <input type="phone" name="phone" id="phone"/>
                             </label>
                         </div>
                     </div>
@@ -136,17 +139,17 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data"/> </label>
+                            <label> Data <input type="date" name="pickUpDate" id="pickUpDate"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time"/> </label>
+                            <label> Godzina <input type="time" name="pickUpTime" id="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5"></textarea>
+                                <textarea name="pickUpComment" id="pickUpComment" rows="5"></textarea>
                             </label>
                         </div>
                     </div>
@@ -167,16 +170,15 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
+                                <span class="summary--text">ile: ${dontation.quantity}</span>
+                                <span class="summary--text">ile: ${quantity}</span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
+                                <span class="summary--text">Dla: ${institution.name} </span>
                             </li>
                         </ul>
                     </div>
@@ -185,19 +187,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li>Prosta 51 street: ${street}</li>
+                                <li>Warszawa city:${city}</li>
+                                <li>99-098 zipcode: ${zipCode}</li>
+                                <li>123 456 789 tel: ${phone}</li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li>13/12/2018 pickUpDate: ${pickUpDate}</li>
+                                <li>15:40 pickUpTime: ${pickUpTime}</li>
+                                <li>Brak uwag uwagi: ${pickUpComment}</li>
                             </ul>
                         </div>
                     </div>
