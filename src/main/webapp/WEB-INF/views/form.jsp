@@ -171,8 +171,7 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
-                                <span class="summary--text">ile: ${dontation.quantity}</span>
-                                <span class="summary--text">ile: ${quantity}</span>
+                                <span class="summary--text" id="quantity">ile: <%= request.getAttribute("quantity") %></span>
                             </li>
 
                             <li>
