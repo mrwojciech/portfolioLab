@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         System.out.println("configuree");
         http.authorizeRequests()
                 .antMatchers("/", "/login").permitAll()
+                .antMatchers("form-confirmation").permitAll()
                 .antMatchers("/donations/add").permitAll()
                 .antMatchers("/favicon.ico", "/static/**").permitAll()
                 .anyRequest().authenticated()

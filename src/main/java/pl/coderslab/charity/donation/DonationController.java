@@ -33,7 +33,7 @@ public class DonationController {
     @PostMapping("/add")
     public String saveDonation(@ModelAttribute Donation donation) {
         donationDao.saveDonation(donation);
-        return "index";
+        return "form-confirmation";
     }
 
 
