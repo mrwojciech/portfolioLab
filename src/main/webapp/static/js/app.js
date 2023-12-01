@@ -165,15 +165,36 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
             // TODO: get data from inputs and show them in summary
-            // console.log(${quantity});
-/*
-            var quantity = request.getAttribute("quantity"); // Pobieranie wartości zmiennej quantity z JSP i przekazanie jej do JavaScriptu
-            document.getElementById('quantity').innerText += ' ' + quantity; // Dodanie wartości quantity do elementu na stronie
-*/
+
+            var quantity = document.getElementById("quantity").value;
+            document.querySelector(".summary").querySelector("#summaryQuantity").innerText = quantity + ' worków';
 
 
+            const institution = document.querySelector('input[name="institution"]:checked').value;
+            document.querySelector(".summary").querySelector("#summaryInstitution").innerText = 'Dla : ' + institution;
+
+            const street = document.getElementById('street').value;
+            document.querySelector(".summary").querySelector("#summaryStreet").innerText = 'ul. ' + street;
+
+            const city = document.getElementById('city').value;
+            document.querySelector(".summary").querySelector("#summaryCity").innerText = city;
+
+            const zipCode = document.getElementById('zipCode').value;
+            document.querySelector(".summary").querySelector("#summaryZipCode").innerText = zipCode;
+
+            const phone = document.getElementById('phone').value;
+
+            document.querySelector(".summary").querySelector("#summaryPhone").innerText = phone;
+
+            const pickUpDate = document.getElementById('pickUpDate').value;
+            document.querySelector(".summary").querySelector("#summaryPickUpDate").innerText = pickUpDate;
+
+            const pickUpTime = document.getElementById('pickUpTime').value;
+            document.querySelector(".summary").querySelector("#summaryPickUpTime").innerText = pickUpTime;
+
+            const pickUpComment = document.getElementById('pickUpComment').value;
+            document.querySelector(".summary").querySelector("#summaryPickUpComment").innerText = pickUpComment;
         }
-
     }
 
     const form = document.querySelector(".form--steps");

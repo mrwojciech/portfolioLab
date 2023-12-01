@@ -38,7 +38,7 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
         <%--// spring forms lub formularz--%>
-        <form action="form-confirmation.html" method="post">
+        <form action="/donations/add" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -51,7 +51,7 @@
                     <div class="form-group form-group--checkbox">
 
                         <label>
-                            <input type="checkbox" name="categories" value=${category.name} id=${category.name} />
+                            <input type="checkbox" name="categories" value=${category.id} id=${category.id} />
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
@@ -72,7 +72,7 @@
                     <label>
                         Liczba 60l worków:
                         <%--                        <form:input path="bags" min="1"/>--%>
-                        <input type="number" name="quantity" id ="dontation.quantity" step="1" min="1"/>
+                        <input type="number" name="quantity" id="quantity" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -91,7 +91,7 @@
                     <div class="form-group form-group--checkbox">
                         <label>
                                 <%--                            <form:select path="institution" items="${institutions}"/>--%>
-                            <input type="radio" name="organization" value="old" id="institution.name"/>
+                            <input type="radio" name="institution" value="${institution.id}" id="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">${institution.name}</div>
@@ -170,14 +170,12 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
-                                <span class="summary--text" id="quantity">ile: <%= request.getAttribute("quantity") %></span>
+                                <span class="summary--text" id="summaryQuantity"></span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
-                                <span class="summary--text">Dla: ${institution.name} </span>
+                                <span class="summary--text" id="summaryInstitution"></span>
                             </li>
                         </ul>
                     </div>
@@ -186,19 +184,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51 street: ${street}</li>
-                                <li>Warszawa city:${city}</li>
-                                <li>99-098 zipcode: ${zipCode}</li>
-                                <li>123 456 789 tel: ${phone}</li>
+                                <li id="summaryStreet"></li>
+                                <li id="summaryCity"></li>
+                                <li id="summaryZipCode"></li>
+                                <li id="summaryPhone"></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018 pickUpDate: ${pickUpDate}</li>
-                                <li>15:40 pickUpTime: ${pickUpTime}</li>
-                                <li>Brak uwag uwagi: ${pickUpComment}</li>
+                                <li id="summaryPickUpDate"></li>
+                                <li id="summaryPickUpTime"></li>
+                                <li id="summaryPickUpComment"></li>
                             </ul>
                         </div>
                     </div>
