@@ -2,7 +2,10 @@ package pl.coderslab.charity.donation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.category.CategoryDao;
 import pl.coderslab.charity.institution.InstitutionDao;
 
@@ -31,8 +34,9 @@ public class DonationController {
     }
 
     @PostMapping("/add")
-    public String saveDonation(@ModelAttribute Donation donation) {
+    public String saveDonation(@ModelAttribute Donation donation, Model model) {
         donationDao.saveDonation(donation);
+        model.addAttribute("donation", donation);
         return "form-confirmation";
     }
 

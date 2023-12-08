@@ -2,6 +2,7 @@ package pl.coderslab.charity.institution;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,6 +15,7 @@ Encja ta reprezentuje dane znajdujące się w aplikacji, np:
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "institutions")
 public class Institution {
     @Id

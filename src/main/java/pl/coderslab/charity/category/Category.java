@@ -2,6 +2,7 @@ package pl.coderslab.charity.category;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import pl.coderslab.charity.donation.Donation;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ name: ubrania, zabawki
 @Setter
 @Entity
 @Table(name = "categories")
+@ToString
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
