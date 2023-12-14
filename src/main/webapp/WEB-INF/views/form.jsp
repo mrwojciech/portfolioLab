@@ -9,13 +9,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Strona główna</title>
+    <title>Strona główna - formularz</title>
     <link rel="stylesheet" href="<c:url value="/static/css/style.css"/>"/>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
-<section class="form--steps">
+<section class="form--steps" id="sectionOne">
     <div class="form--steps-instructions">
         <div class="form--steps-container">
             <h3>Ważne!</h3>

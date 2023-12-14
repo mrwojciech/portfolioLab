@@ -9,13 +9,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
+    <title>Potwierdzenie</title>
     <link rel="stylesheet" href="<c:url value="/static/css/style.css"/>"/>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
-<div class="container container--85">
+<div class="container container--85" id="summary">
     <h2> Dziękujemy za dary.</h2>
     <h1> Twoja darowizna to:</h1>
     <h1> Liczba worków: ${donation.quantity}</h1>
@@ -37,6 +37,7 @@
     <br>
 </div>
 <%@ include file="footer.jsp" %>
-<script src="<c:url value="/static/js/app.js"/>"></script>
+<script src="<c:url value="/static/js/app.js"/>">
+</script>
 </body>
 </html>

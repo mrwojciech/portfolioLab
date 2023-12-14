@@ -202,3 +202,19 @@ document.addEventListener("DOMContentLoaded", function () {
         new FormSteps(form);
     }
 });
+
+
+window.onload = function () {
+    var summaryElement = document.getElementById('summary');
+    if (summaryElement) {
+        summaryElement.scrollIntoView({behavior: 'smooth'});
+    }
+};
+
+window.onload = function () {
+    var summaryElement = document.getElementById('login');
+    if (summaryElement) {
+        summaryElement.scrollIntoView({behavior: 'smooth'});
+    }
+};
+
